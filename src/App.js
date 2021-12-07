@@ -6,13 +6,15 @@ import Textarea from "./components/Textarea";
 import './App.css'
 
 function App() {
-  const INITIAL_STATE = { testInput: '', testSelect: '', testTextarea: '' };
+  const INITIAL_STATE = { testInput: '', testSelect: '', testTextarea: '', testRadioInput: "Sim" };
   const [state, setState] = useState(INITIAL_STATE);
-  const { testInput, testSelect, testTextarea } = state;
+  const { testInput, testSelect, testTextarea, testRadioInput } = state;
 
   const handleChange = ({ target: { name, value } }) => setState({ ...state, [name]: value });
 
-  const handleButton = () => setState({ ...state, testInput: '', testSelect: '', testTextarea: '' });
+  const handleButton = () => {
+    setState(INITIAL_STATE)    
+  };
 
   return (
     <div className="App">
@@ -22,6 +24,24 @@ function App() {
         label="Component input: "
         value={ testInput }
         callback={ handleChange }
+      />
+      <Input
+        id="test-radio-input-sim"
+        type="radio"
+        name="testRadioInput"
+        label="SIM "
+        value="Sim"
+        callback={ handleChange }
+        checked={ (testRadioInput === 'Sim') ? true : false }
+      />
+      <Input
+        id="test-radio-input-nao"
+        type="radio"
+        name="testRadioInput"
+        label="NÃO "
+        value="Não"
+        callback={ handleChange }
+        checked={ (testRadioInput === 'Não') ? true : false }
       />
       <Select
         id="test-select"
