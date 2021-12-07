@@ -14,12 +14,13 @@ const Button = ({ id, type, callback, text }) => (
 Button.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string,
-  callback: PropTypes.func.isRequired,
+  callback: PropTypes.func,
   text: PropTypes.string.isRequired,
-}
+};
 
 Button.defaultProps = {
   type: 'button',
-}
+  callback: () => {},
+};
 
 export default Button;
